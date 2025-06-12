@@ -1,7 +1,12 @@
+import ConnectWallet from "@/components/ConnectWallet";
+import RootLayout from "../components/AppWalletProvider";
+
 export default function Home() {
   return (
-    <div>
-      <h1>D-App - Solana Token Launchpad</h1>
+    <div className="flex flex-col gap-14 px-36 h-screen">
+      <RootLayout>
+        <ConnectWallet />
+      </RootLayout>
     </div>
   );
 }
