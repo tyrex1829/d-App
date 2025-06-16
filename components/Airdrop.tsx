@@ -1,9 +1,7 @@
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { useState } from "react";
 
 const Airdrop = () => {
-  const [amount, setAmount] = useState(1);
   const wallet = useWallet();
   const { connection } = useConnection();
 
@@ -12,28 +10,17 @@ const Airdrop = () => {
       alert("Connect your wallet first!");
       return;
     }
-    await connection.requestAirdrop(
-      wallet.publicKey,
-      amount * LAMPORTS_PER_SOL
-    );
+    await connection.requestAirdrop(wallet.publicKey, 1 * LAMPORTS_PER_SOL);
     alert("sent");
   };
+
   return (
     <div>
-      <div className="flex flex-col gap-4 border border-gray-400 rounded-xl px-10 py-6">
-        <h1 className="text-center text-xl font-medium mb-3">
-          Request Airdrop
-        </h1>
-        <input
-          type="number"
-          placeholder="SOL"
-          value={amount}
-          min={1}
-          className="border border-gray-400 rounded-xl px-2 py-1"
-          onChange={(e) => {
-            setAmount(parseInt(e.target.value));
-          }}
-        />
+      <div className="flex flex-col gap-8 border border-gray-400 rounded-xl px-10 py-6">
+        <h1 className="text-center text-2xl font-bold mb-5">Request Airdrop</h1>
+        <div className="text-center text-xl font-medium mb-1.5">
+          1 SOL in Devnet
+        </div>
         <button
           onClick={airdropToUser}
           className="font-medium  py-2 bg-gray-600 rounded-2xl text-white hover:bg-gray-500 cursor-pointer"
