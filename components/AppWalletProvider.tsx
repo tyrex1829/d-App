@@ -21,9 +21,7 @@ export default function RootLayout({
   //   const endpoint = React.useMemo(() => clusterApiUrl(network), [network]);
 
   return (
-    <ConnectionProvider
-      endpoint={"https://solana-devnet.g.alchemy.com/v2/vty9pzfdkRWc3K0IA3Lxm"}
-    >
+    <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
